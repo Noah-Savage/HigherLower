@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Threading;
+
+namespace HigherLower
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            
+            Random rnd = new Random();
+            
+            //Generate random number
+            int toGuess = rnd.Next(1, 500);
+            int guessCount = 0;
+            
+            //This does nothing lol
+            Console.WriteLine("I'm thinking...");
+            Thread.Sleep(2000);
+            Console.WriteLine("Still thinking...");
+            Thread.Sleep(1500);
+            Console.WriteLine("I got it! Guess a number between 1 and 500: ");
+            int guess = Convert.ToInt32(Console.ReadLine());
+            
+            //Logic to tell user if they need to guess higher or lower
+            while(!(guess == toGuess)){
+                if(guess > toGuess){
+                    Console.WriteLine("Lower! Guess again: ");
+                    guess = Convert.ToInt32(Console.ReadLine());
+                    guessCount++;
+                }
+                else if(guess < toGuess){
+                    Console.WriteLine("Higher! Guess again: ");
+                    guess = Convert.ToInt32(Console.ReadLine());
+                    guessCount++;
+                }
+            }
+            Console.WriteLine("You got it in " + guessCount + " guesses! Nice job!");
+        }
+    }
+}
